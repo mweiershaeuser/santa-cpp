@@ -5,10 +5,13 @@
 #include "src/teddy.hpp"
 #include "src/little-pony.hpp"
 
+#include "tests.hpp"
+
 int main()
 {
-    Object obj("MyObject");
-    std::cout << "Hello " << obj << "!\n"
+    Object **objects = MyUnitTests();
+    std::cout << *objects[0] << "\n"
+              << *objects[1] << "\n"
               << std::endl;
     return 0;
 }

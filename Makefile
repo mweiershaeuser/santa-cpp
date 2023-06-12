@@ -1,12 +1,14 @@
 CC = clang++
 CPPFLAGS += -Wall -Werror -Wextra
 
+MAIN_SRC = ./main.cpp ./tests.cpp
+
 SRC_DIR = ./src
 OBJ_DIR = ./obj
-SRC = ./main.cpp $(wildcard $(SRC_DIR)/*.cpp)
-OBJ = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC))
+SRC = $(wildcard $(SRC_DIR)/*.cpp)
+OBJ = $(patsubst ./%.cpp,$(OBJ_DIR)/%.o,$(MAIN_SRC)) $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC))
 
-NAME = santa
+NAME = xmas
 
 .PHONY: all clean fclean re
 
@@ -14,6 +16,9 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) -o $@ $^
+
+$(OBJ_DIR)/%.o: ./%.cpp
+	$(CC) -c -o $@ $<
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CC) -c -o $@ $<
