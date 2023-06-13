@@ -2,10 +2,8 @@
 
 #include <iostream>
 
-Wrap::Wrap()
+Wrap::Wrap() : open(true), gift(NULL)
 {
-    this->open = true;
-    this->gift = NULL;
     std::cout << "whistles while working" << std::endl;
 }
 

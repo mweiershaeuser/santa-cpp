@@ -6,8 +6,13 @@
 #include "src/little-pony.hpp"
 #include "src/box.hpp"
 #include "src/gift-paper.hpp"
+#include "src/itable.hpp"
+#include "src/iconveyor-belt.hpp"
 
 #include "tests.hpp"
+
+ITable *createTable();
+IConveyorBelt *createConveyorBelt();
 
 int main()
 {
