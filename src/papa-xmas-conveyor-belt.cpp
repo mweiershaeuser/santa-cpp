@@ -6,5 +6,6 @@ PapaXmasConveyorBelt::PapaXmasConveyorBelt()
 {
 }
 
-void PapaXmasConveyorBelt::put() {}
+void PapaXmasConveyorBelt::put(Object *object) {}
+
 Object *PapaXmasConveyorBelt::take() {}

@@ -8,7 +8,7 @@ class PapaXmasConveyorBelt : public IConveyorBelt
 {
 public:
     PapaXmasConveyorBelt();
-    void put();
+    void put(Object *object);
     Object *take();
 };
 

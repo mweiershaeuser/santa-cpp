@@ -9,8 +9,10 @@ protected:
     Object *object = NULL;
 
 public:
-    virtual void put() = 0;
+    virtual void put(Object *object) = 0;
     virtual Object *take() = 0;
 };
+
+IConveyorBelt *createConveyorBelt();
 
 #endif

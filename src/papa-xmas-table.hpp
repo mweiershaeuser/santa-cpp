@@ -10,8 +10,8 @@ class PapaXmasTable : public ITable
 {
 public:
     PapaXmasTable();
-    void put();
-    Object *take();
+    void put(Object *object);
+    Object *take(int index);
     std::string *look();
 };
 

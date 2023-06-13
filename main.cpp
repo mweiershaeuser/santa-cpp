@@ -11,9 +11,6 @@
 
 #include "tests.hpp"
 
-ITable *createTable();
-IConveyorBelt *createConveyorBelt();
-
 int main()
 {
     Object **toys = MyUnitTests();
