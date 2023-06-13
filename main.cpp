@@ -4,14 +4,32 @@
 #include "src/toy.hpp"
 #include "src/teddy.hpp"
 #include "src/little-pony.hpp"
+#include "src/box.hpp"
+#include "src/gift-paper.hpp"
 
 #include "tests.hpp"
 
 int main()
 {
-    Object **objects = MyUnitTests();
-    std::cout << *objects[0] << "\n"
-              << *objects[1] << "\n"
+    Object **toys = MyUnitTests();
+    std::cout << *toys[0] << "\n"
+              << *toys[1]
               << std::endl;
+
+    Teddy *teddy = new Teddy("cuddles");
+    Box *box = new Box();
+    GiftPaper *giftPaper = new GiftPaper();
+
+    Object **presentParts = new Object *[4];
+    presentParts[0] = teddy;
+    presentParts[1] = box;
+    presentParts[2] = giftPaper;
+    presentParts[3] = NULL;
+
+    Object *present = MyUnitTests(presentParts);
+
+    std::cout << *present
+              << std::endl;
+
     return 0;
 }

@@ -5,4 +5,6 @@
 
 Object **MyUnitTests();
 
+Object *MyUnitTests(Object **);
+
 #endif
