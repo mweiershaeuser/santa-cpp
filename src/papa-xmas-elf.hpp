@@ -9,7 +9,8 @@ class PapaXmasElf : public IElf
 {
 public:
     PapaXmasElf();
-    void processGift(Toy *gift);
+    PapaXmasElf(ITable *_table, IConveyorBelt *_conveyorBelt);
+    void processGifts();
 };
 
 #endif

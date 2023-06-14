@@ -14,9 +14,8 @@ protected:
 
 public:
     IElf();
-    virtual void processGift(Toy *gift) = 0;
+    IElf(ITable *_table, IConveyorBelt *_conveyorBelt);
+    virtual void processGifts() = 0;
 };
-
-IElf *createElf();
 
 #endif

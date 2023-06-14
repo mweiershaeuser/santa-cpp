@@ -7,12 +7,9 @@
 #include "src/wrap.hpp"
 #include "src/box.hpp"
 #include "src/gift-paper.hpp"
-#include "src/itable.hpp"
-#include "src/iconveyor-belt.hpp"
 
 Object **MyUnitTests();
 Object *MyUnitTests(Object **);
-void testTableAndConveyorBelt();
 
 int main()
 {
@@ -35,8 +32,6 @@ int main()
 
     std::cout << "Wrapped Present: " << *(((Wrap *)(present->openMe()))->openMe())
               << std::endl;
-
-    testTableAndConveyorBelt();
 
     return 0;
 }
@@ -68,12 +63,4 @@ Object *MyUnitTests(Object **presentParts)
     }
 
     return presentParts[i - 1];
-}
-
-void testTableAndConveyorBelt()
-{
-    ITable *table = createTable();
-    IConveyorBelt *conveyorBelt = createConveyorBelt();
-
-    Wrap *wrap = new Box();
 }

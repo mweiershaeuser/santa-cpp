@@ -10,6 +10,10 @@ PapaXmasConveyorBelt::PapaXmasConveyorBelt() : IConveyorBelt()
 {
 }
 
+PapaXmasConveyorBelt::PapaXmasConveyorBelt(std::list<Wrap *> *_input) : IConveyorBelt(_input)
+{
+}
+
 void PapaXmasConveyorBelt::put(Wrap *object)
 {
     if (this->object == NULL)
@@ -32,14 +36,14 @@ Wrap *PapaXmasConveyorBelt::take()
 
 void PapaXmasConveyorBelt::IN()
 {
-    if (this->input.empty())
+    if ((*this->input).empty())
     {
         std::cerr << "ConveyorBelt Input has not been initalized yet." << std::endl;
     }
     else
     {
-        this->object = *(this->input.begin());
-        this->input.pop_front();
+        this->object = *((*this->input).begin());
+        (*this->input).pop_front();
     }
 }
 

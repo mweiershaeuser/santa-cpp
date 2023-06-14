@@ -20,6 +20,4 @@ public:
     virtual std::string *look() = 0;
 };
 
-ITable *createTable();
-
 #endif

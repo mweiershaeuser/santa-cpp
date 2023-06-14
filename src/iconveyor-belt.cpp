@@ -1,12 +1,13 @@
 #include "iconveyor-belt.hpp"
 
-#include "papa-xmas-conveyor-belt.hpp"
+#include <list>
+
+#include "wrap.hpp"
 
 IConveyorBelt::IConveyorBelt() : object(NULL)
 {
 }
 
-IConveyorBelt *createConveyorBelt()
+IConveyorBelt::IConveyorBelt(std::list<Wrap *> *_input) : object(NULL), input(_input)
 {
-    return new PapaXmasConveyorBelt();
 }

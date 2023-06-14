@@ -4,11 +4,10 @@
 #include "itable.hpp"
 #include "iconveyor-belt.hpp"
 
-IElf::IElf() : table(createTable()), conveyorBelt(createConveyorBelt())
+IElf::IElf()
 {
 }
 
-IElf *createElf()
+IElf::IElf(ITable *_table, IConveyorBelt *_conveyorBelt) : table(_table), conveyorBelt(_conveyorBelt)
 {
-    return new PapaXmasElf();
 }
