@@ -3,19 +3,19 @@
 
 #include <list>
 
-#include "object.hpp"
+#include "wrap.hpp"
 
 class IConveyorBelt
 {
 protected:
-    Object *object;
-    std::list<Object *> input;
-    std::list<Object *> output;
+    Wrap *object;
+    std::list<Wrap *> input;
+    std::list<Wrap *> output;
 
 public:
     IConveyorBelt();
-    virtual void put(Object *object) = 0;
-    virtual Object *take() = 0;
+    virtual void put(Wrap *object) = 0;
+    virtual Wrap *take() = 0;
     virtual void IN() = 0;
     virtual void OUT() = 0;
 };

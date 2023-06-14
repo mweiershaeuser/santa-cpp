@@ -1,32 +1,43 @@
 CC = g++
 CPPFLAGS += -Wall -Werror -Wextra
 
-MAIN_SRC = ./main.cpp ./tests.cpp
-
 SRC_DIR = ./src
 OBJ_DIR = ./obj
 SRC = $(wildcard $(SRC_DIR)/*.cpp)
-OBJ = $(patsubst ./%.cpp,$(OBJ_DIR)/%.o,$(MAIN_SRC)) $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC))
+OBJ = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC))
 
-NAME = xmas
+TARGET_SRCS = $(wildcard ./*.cpp)
+TARGET_OBJS = $(patsubst ./%.cpp,./%.o,$(TARGET_SRCS))
+
+WRAPPINGCHAIN_NAME = wrapping-chain
+SANTA_NAME = santa
+TESTS_NAME = tests
+
+ALL_TARGETS = $(WRAPPINGCHAIN_NAME) $(SANTA_NAME) $(TESTS_NAME)
 
 .PHONY: all clean fclean re
 
-all: $(NAME)
+all: $(ALL_TARGETS)
 
-$(NAME): $(OBJ)
+$(WRAPPINGCHAIN_NAME): $(WRAPPINGCHAIN_NAME).o $(OBJ)
 	$(CC) -o $@ $^
 
-$(OBJ_DIR)/%.o: ./%.cpp
+$(SANTA_NAME): $(SANTA_NAME).o $(OBJ)
+	$(CC) -o $@ $^
+
+$(TESTS_NAME): $(TESTS_NAME).o $(OBJ)
+	$(CC) -o $@ $^
+
+./%.o: ./%.cpp
 	$(CC) -c -o $@ $<
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CC) -c -o $@ $<
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(TARGET_OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(ALL_TARGETS) $(wildcard ./*.xml)
 
 re: fclean all

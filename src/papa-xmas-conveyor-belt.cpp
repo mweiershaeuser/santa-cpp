@@ -4,13 +4,13 @@
 #include <list>
 
 #include "iconveyor-belt.hpp"
-#include "object.hpp"
+#include "wrap.hpp"
 
 PapaXmasConveyorBelt::PapaXmasConveyorBelt() : IConveyorBelt()
 {
 }
 
-void PapaXmasConveyorBelt::put(Object *object)
+void PapaXmasConveyorBelt::put(Wrap *object)
 {
     if (this->object == NULL)
     {
@@ -22,9 +22,9 @@ void PapaXmasConveyorBelt::put(Object *object)
     }
 }
 
-Object *PapaXmasConveyorBelt::take()
+Wrap *PapaXmasConveyorBelt::take()
 {
-    Object *temp;
+    Wrap *temp;
     temp = this->object;
     this->object = NULL;
     return temp;
