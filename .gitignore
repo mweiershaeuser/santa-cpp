@@ -2,7 +2,7 @@ wrapping-chain
 santa
 tests
 
-obj/*
+obj/*.o
 
 # Prerequisites
 *.d
