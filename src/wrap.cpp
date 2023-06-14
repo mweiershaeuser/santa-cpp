@@ -34,3 +34,8 @@ void Wrap::closeMe()
 {
     this->open = false;
 }
+
+ObjectType Wrap::getType()
+{
+    return OWrap;
+}

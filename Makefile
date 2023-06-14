@@ -1,4 +1,4 @@
-CC = clang++
+CC = g++
 CPPFLAGS += -Wall -Werror -Wextra
 
 MAIN_SRC = ./main.cpp ./tests.cpp

@@ -1,33 +1,33 @@
 #include "papa-xmas-table.hpp"
 
 #include <iostream>
-#include <iterator>
+#include <string>
+#include <list>
 
-PapaXmasTable::PapaXmasTable()
+#include "itable.hpp"
+
+PapaXmasTable::PapaXmasTable() : ITable()
 {
-    this->objects[0] = NULL;
 }
 
 void PapaXmasTable::put(Object *object)
 {
     if (this->collapsed)
     {
-        std::cout
-            << "The table is collapsed!" << std::endl;
+        std::cerr
+            << "The table has already collapsed!" << std::endl;
     }
     else
     {
-        int elementsOnTable = std::size(this->objects);
-        if (elementsOnTable >= this->MAX_OBJECTS)
+        if (this->objects.size() >= this->MAX_OBJECTS)
         {
             this->collapsed = true;
-            std::cout
-                << "The table was already full and collapsed!" << std::endl;
+            std::cerr
+                << "The table was already full and has now collapsed!" << std::endl;
         }
         else
         {
-            this->objects[elementsOnTable] = object;
-            this->objects[elementsOnTable + 1] = NULL;
+            this->objects.push_back(object);
         }
     }
 }
@@ -41,15 +41,39 @@ Object *PapaXmasTable::take(int index)
         exit(84);
     }
 
-    return this->objects[index];
+    std::list<Object *>::iterator it = this->objects.begin();
+    int i = 0;
+    while (i < this->objects.size())
+    {
+        if (i == index)
+        {
+            it = this->objects.erase(it);
+            i = this->objects.size();
+        }
+        else
+        {
+            i++;
+            it++;
+        }
+    }
+
+    return *it;
 }
 
 std::string *PapaXmasTable::look()
 {
-    int i = 0;
-    while (this->objects[i] != NULL)
+    int elementsOnTable = this->objects.size();
+
+    std::string *titles = new std::string[elementsOnTable + 1];
+
+    std::list<Object *>::iterator it = this->objects.begin();
+    for (int i = 0; i < elementsOnTable; i++)
     {
-        std::cout << *this->objects[i] << std::endl;
-        i++;
+        titles[i] = (*it)->getTitle();
+        it++;
     }
+
+    titles[elementsOnTable] = (std::string)NULL;
+
+    return titles;
 }

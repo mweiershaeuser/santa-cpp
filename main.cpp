@@ -28,9 +28,9 @@ int main()
     presentParts[2] = giftPaper;
     presentParts[3] = NULL;
 
-    Object *present = MyUnitTests(presentParts);
+    Wrap *present = (Wrap *)MyUnitTests(presentParts);
 
-    std::cout << *present
+    std::cout << "Wrapped Present: " << *(((Wrap *)(present->openMe()))->openMe())
               << std::endl;
 
     return 0;

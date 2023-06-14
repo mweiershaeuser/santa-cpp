@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 
+#include "object-type.hpp"
+
 class Object
 {
 private:
@@ -14,6 +16,7 @@ public:
     Object(std::string _title);
     friend std::ostream &operator<<(std::ostream &os, const Object &obj);
     std::string getTitle();
+    virtual ObjectType getType() = 0;
 };
 
 #endif

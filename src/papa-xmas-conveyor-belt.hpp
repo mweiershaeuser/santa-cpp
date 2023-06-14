@@ -10,6 +10,8 @@ public:
     PapaXmasConveyorBelt();
     void put(Object *object);
     Object *take();
+    void IN();
+    void OUT();
 };
 
 #endif

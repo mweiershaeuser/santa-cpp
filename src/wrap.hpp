@@ -2,6 +2,7 @@
 #define WRAP_HPP
 
 #include "object.hpp"
+#include "object-type.hpp"
 
 class Wrap : public Object
 {
@@ -14,6 +15,7 @@ public:
     void wrapMeThat(Object *gift);
     Object *openMe();
     void closeMe();
+    ObjectType getType();
 };
 
 #endif
